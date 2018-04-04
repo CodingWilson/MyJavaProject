@@ -22,14 +22,13 @@ public class EchoClient {
     public void start() {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
-        Bootstrap bootstrap = new Bootstrap();
-
-        bootstrap.group(eventLoopGroup)
+        Bootstrap bootstrap = new Bootstrap()
+                .group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
                 .remoteAddress(new InetSocketAddress(host, port))
                 .handler(new ChannelInitializer<>() {
                     @Override
-                    protected void initChannel(Channel ch) throws Exception {
+                    protected void initChannel(Channel ch) {
                         ch.pipeline().addLast(new EchoClientHandler());
                     }
                 });
