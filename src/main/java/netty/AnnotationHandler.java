@@ -14,6 +14,8 @@ public class AnnotationHandler implements IHandler {
 
     public AnnotationHandler(IHandler handler) {
         this.handler = handler;
+        if (handler.equals())
+
         init();
     }
 
@@ -24,11 +26,11 @@ public class AnnotationHandler implements IHandler {
             if (annotation == null) {
                 continue;
             }
-
             String apiName = annotation.ApiName();
             methodInfo.computeIfAbsent(handler, (k) -> {
                 ConcurrentHashMap<String, Method> nameToMethod = new ConcurrentHashMap<>();
                 nameToMethod.put(apiName, declaredMethod);
+                methodInfo.containsKey(super);
                 return nameToMethod;
             });
         }
@@ -47,8 +49,7 @@ public class AnnotationHandler implements IHandler {
                                     } catch (IllegalAccessException | InvocationTargetException e) {
                                         e.printStackTrace();
                                     }
-                                    return "error";
-                                }).orElse("error")
+                                    return "error"; }).orElse("error")
                 ).orElseThrow(() -> new RuntimeException("方法不存在！" + apiName));
     }
 }
