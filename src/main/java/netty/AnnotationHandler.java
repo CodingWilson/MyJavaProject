@@ -14,11 +14,9 @@ public class AnnotationHandler implements IHandler {
 
     public AnnotationHandler(IHandler handler) {
         this.handler = handler;
-        if (handler.equals())
-
         init();
     }
-
+`
     private void init() {
         Method[] declaredMethods = handler.getClass().getDeclaredMethods();
         for (Method declaredMethod : declaredMethods) {
@@ -30,7 +28,6 @@ public class AnnotationHandler implements IHandler {
             methodInfo.computeIfAbsent(handler, (k) -> {
                 ConcurrentHashMap<String, Method> nameToMethod = new ConcurrentHashMap<>();
                 nameToMethod.put(apiName, declaredMethod);
-                methodInfo.containsKey(super);
                 return nameToMethod;
             });
         }
